@@ -177,9 +177,9 @@ const SettingsContainer: React.FC<SettingsContainerProps> = ({
   };
 
   React.useEffect(() => {
-    window.addEventListener("click", disableSettingsDisplay);
+    // window?.addEventListener("click", disableSettingsDisplay);
     return () => {
-      window.removeEventListener("click", disableSettingsDisplay);
+      // window?.removeEventListener("click", disableSettingsDisplay);
     };
   }, []);
 

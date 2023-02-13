@@ -17,7 +17,7 @@ const Signin = (): JSX.Element => {
   ) => {
     e?.preventDefault();
     try {
-      await login(data);
+      // await login(data);
       router.push("/dashboard");
     } catch (e) {
       console.error(e);

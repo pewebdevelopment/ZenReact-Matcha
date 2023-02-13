@@ -415,7 +415,10 @@ export const updatePosition = async (authorization: string) => {
     });
   } catch (e) {
     const result = await getPositionAPI();
-    const [latitude, longitude] = result.data.loc.split(",");
+    const [latitude, longitude] = [
+      "1.2220000",
+      "1.33333333",
+    ]; /*result.data.loc?.split(",");*/
     if (typeof latitude === "string" && typeof longitude === "string") {
       updatePositionRequest({
         authorization,

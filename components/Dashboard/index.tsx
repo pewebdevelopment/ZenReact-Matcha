@@ -8,8 +8,8 @@ import { useUser } from "../auth";
 const Dashboard = (): JSX.Element => {
   const [{ user }] = useUser();
   React.useEffect(() => {
-    const authorization = user?.authorization || "";
-    updatePosition(authorization).catch(console.error);
+    // const authorization = user?.authorization || "";
+    // updatePosition(authorization).catch(console.error);
   }, []);
 
   return (

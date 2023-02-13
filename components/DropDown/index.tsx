@@ -16,9 +16,9 @@ const DropDown: React.FC<DropDownProps> = ({
   const [showFilters, setShowFilters] = React.useState<boolean>(false);
 
   React.useEffect(() => {
-    window.addEventListener("click", hideDropDown);
+    // window?.addEventListener("click", hideDropDown);
     return () => {
-      window.removeEventListener("click", hideDropDown);
+      // window?.removeEventListener("click", hideDropDown);
     };
   }, []);
 
@@ -30,13 +30,17 @@ const DropDown: React.FC<DropDownProps> = ({
     setShowFilters(!showFilters);
     event.stopPropagation();
     if (showFilters) {
-      window.addEventListener("click", hideDropDown);
+
+// if (typeof window !== "undefined") {
+//      window?.addEventListener("click", hideDropDown);
+// }
+   
     }
   };
 
   const hideDropDown = () => {
     setShowFilters(false);
-    window.removeEventListener("click", hideDropDown);
+    // window?.removeEventListener("click", hideDropDown);
   };
 
   return (

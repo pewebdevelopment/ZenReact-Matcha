@@ -41,7 +41,7 @@ const SettingsPersonalInfo = () => {
       setValue(
         "birthDate",
         data.birthDate instanceof Date && !isNaN(data.birthDate.getTime())
-          ? data.birthDate.toISOString().split("T")[0]
+          ? data.birthDate /*.toISOString()?.split("T")[0]*/
           : data.birthDate
       );
       setTagsSet(new Set(data.tags));

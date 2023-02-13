@@ -83,13 +83,13 @@ const ProfileListing = () => {
       setShowSearch(false);
     }
     if (showFilters) {
-      window.addEventListener("click", disableFilterDisplay);
+      // window?.addEventListener("click", disableFilterDisplay);
     }
   };
 
   const disableFilterDisplay = () => {
     setShowFilters(false);
-    window.removeEventListener("click", disableFilterDisplay);
+    // window?.removeEventListener("click", disableFilterDisplay);
   };
 
   const toggleSearch = (e: React.MouseEvent) => {
@@ -99,13 +99,13 @@ const ProfileListing = () => {
       setShowFilters(false);
     }
     if (showSearch) {
-      window.addEventListener("click", disableSearchDisplay);
+      // window?.addEventListener("click", disableSearchDisplay);
     }
   };
 
   const disableSearchDisplay = () => {
     setShowSearch(false);
-    window.removeEventListener("click", disableSearchDisplay);
+    // window?.removeEventListener("click", disableSearchDisplay);
   };
 
   const handleSwipe = async (

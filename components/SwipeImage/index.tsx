@@ -1,5 +1,5 @@
 import React /*{ useMemo }*/ from "react";
-import TinderCard from "react-tinder-card";
+// import TinderCard from "react-tinder-card";
 import SwipeImageProfile, {
   SuggestionEmptyCard,
 } from "@/components/SwipeImageProfile";
@@ -31,18 +31,23 @@ function SwipeImage({
       <div className="z-10 w-full sm:w-screen sm:max-w-sm">
         <section className="relative" style={{ height: "34rem" }}>
           {!endOfSuggestions ? (
-            suggestedUsers.map((singleSuggestedUser) => (
-              <TinderCard
-                preventSwipe={["down"]}
-                key={singleSuggestedUser.id}
-                onSwipe={(dir) => swiped(singleSuggestedUser.userName, dir)}
-                onCardLeftScreen={(dir) =>
-                  leftScreen(singleSuggestedUser.userName, dir)
-                }
-              >
-                <SwipeImageProfile profile={singleSuggestedUser} />
-              </TinderCard>
-            ))
+            suggestedUsers.map(
+              (singleSuggestedUser) => (
+                <div key={singleSuggestedUser.id}>Zen</div>
+              )
+              // typeof window !== "undefined" && (
+              // <TinderCard
+              //   preventSwipe={["down"]}
+              //   key={singleSuggestedUser.id}
+              //   onSwipe={(dir) => swiped(singleSuggestedUser.userName, dir)}
+              //   onCardLeftScreen={(dir) =>
+              //     leftScreen(singleSuggestedUser.userName, dir)
+              //   }
+              // >
+              //   <SwipeImageProfile profile={singleSuggestedUser} />
+              // </TinderCard>
+              // )
+            )
           ) : (
             <SuggestionEmptyCard />
           )}
