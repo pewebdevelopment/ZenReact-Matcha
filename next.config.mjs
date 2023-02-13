@@ -1,4 +1,4 @@
-import withPlugins from "next-compose-plugins";
+// import withPlugins from "next-compose-plugins";
 import optimizedImages from "next-optimized-images";
 import withCSS from "@zeit/next-css";
 
@@ -18,4 +18,10 @@ const nextConfig = {
 
 // export default nextConfig;
 
-export default nextConfig;
+// export default (_phase, { defaultConfig }) => {
+//   const plugins = [optimizedImages, withCSS];
+//   return plugins.reduce((acc, plugin) => plugin(acc), {
+//     ...defaultConfig,
+//     ...nextConfig,
+//   });
+// };
