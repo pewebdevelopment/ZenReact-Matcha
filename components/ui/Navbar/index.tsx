@@ -38,7 +38,7 @@ function Navbar(): JSX.Element {
     const isCurrentLink = link.href === pathname;
     return (
       <Link href={link.href} key={`l-${index}`}>
-        <a
+        <span
           className={`${
             isCurrentLink
               ? "bg-gray-900 text-white"
@@ -48,7 +48,7 @@ function Navbar(): JSX.Element {
           } font-medium`}
         >
           {link.label}
-        </a>
+        </span>
       </Link>
     );
   };
@@ -219,12 +219,12 @@ function Navbar(): JSX.Element {
                         </a>
                       </Link>
                       <Link href="/settings">
-                        <a
+                        <span
                           className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
                           role="menuitem"
                         >
                           Settings
-                        </a>
+                        </span>
                       </Link>
                       <button
                         onClick={logout}

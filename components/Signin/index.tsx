@@ -47,9 +47,9 @@ const Signin = (): JSX.Element => {
         />
         <div className="text-right text-sm sm:text-base">
           <Link href="/forgot-password">
-            <a className="text-gray-400 underline bold">
+            <span className="text-gray-400 underline bold">
               Forgot your password ?
-            </a>
+            </span>
           </Link>
         </div>
         <input
@@ -62,7 +62,7 @@ const Signin = (): JSX.Element => {
         <span className="text-gray-400">
           Not a member yet ?{" "}
           <Link href="/signup">
-            <a className="underline bold">Create your account here</a>
+            <span className="underline bold">Create your account here</span>
           </Link>
           .
         </span>

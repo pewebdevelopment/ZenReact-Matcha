@@ -50,7 +50,7 @@ const userContext = React.createContext<[UserState, ActionsAndState]>([
 export const useUser = (): [UserState, ActionsAndState] =>
   React.useContext(userContext);
 
-export const UserProvider: React.FC = ({ children }): JSX.Element => {
+export const UserProvider: React.FC = ({ children }): ({children : JSX.Element}) => {
   const [state, dispatch] = React.useReducer(userReducer, initialUserState);
   const [loading, setLoading] = React.useState<boolean>(true);
   const [error, setError] = React.useState<UserError | null>(null);

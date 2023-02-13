@@ -80,7 +80,7 @@ const Signup = (): JSX.Element => {
         <span className="text-gray-400">
           Already have an account ?{" "}
           <Link href="/signin">
-            <a className="underline bold">Sign in instead</a>
+            <span className="underline bold">Sign in instead</span>
           </Link>
           .
         </span>

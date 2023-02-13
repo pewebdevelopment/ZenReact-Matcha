@@ -3,7 +3,7 @@ import { UserInput } from "@/components/auth";
 import { useMutation, useInfiniteQuery, useQuery } from "react-query";
 import { Orientation, TextMessage, OtherUserProfileType } from "@/interfaces";
 import { Image } from "@/components/auth/classes";
-import config from "@/config";
+import config from "../../config";
 import getPosition from "../getPosition";
 interface Authorization {
   authorization: string;
@@ -331,55 +331,50 @@ export type ChatPreview = UserInput & {
 };
 
 export const useGetAllMatches = ({ authorization }: Authorization) => {
-  return useQuery(
-    "matches",
-    async (): Promise<ChatPreview[] | undefined> => {
-      // fetch matches
-      const result = await apiRequest<Match[]>("get", "/api/match", {
-        headers: {
-          Authorization: authorization,
-        },
-      })[0];
-      if (result.status === 200) {
-        const matches = result.data.filter((match) => match);
-        const userDataPromises = matches.map(({ id }) =>
-          getOtherUserInfosRequest({ authorization, otherUserId: id })
-        );
-        // fetch first message of matches
-        const messagesPreview = await Promise.all(
-          matches.map(({ id }) =>
-            getMessagePreview({ authorization, userId: id })
-          )
-        );
-        // fetch rest of otherUserData (images)
-        return (await Promise.all(userDataPromises))
-          .map((elem, index) => {
-            elem.data.images = elem.data.images.map(
-              (image) => new Image(image)
-            );
-            // inserting message preview
-            if (messagesPreview[index].status === 200) {
-              return {
-                ...elem.data,
-                messagePreview: messagesPreview[index].data[0],
-              };
-            } else {
-              const blankMessage: TextMessage = {
-                sender: -1,
-                receiver: -1,
-                content: "",
-                date: "",
-              };
-              return {
-                ...elem.data,
-                messagePreview: blankMessage,
-              };
-            }
-          })
-          .filter((chatPreview) => chatPreview);
-      }
+  return useQuery("matches", async (): Promise<ChatPreview[] | undefined> => {
+    // fetch matches
+    const result = await apiRequest<Match[]>("get", "/api/match", {
+      headers: {
+        Authorization: authorization,
+      },
+    })[0];
+    if (result.status === 200) {
+      const matches = result.data.filter((match) => match);
+      const userDataPromises = matches.map(({ id }) =>
+        getOtherUserInfosRequest({ authorization, otherUserId: id })
+      );
+      // fetch first message of matches
+      const messagesPreview = await Promise.all(
+        matches.map(({ id }) =>
+          getMessagePreview({ authorization, userId: id })
+        )
+      );
+      // fetch rest of otherUserData (images)
+      return (await Promise.all(userDataPromises))
+        .map((elem, index) => {
+          elem.data.images = elem.data.images.map((image) => new Image(image));
+          // inserting message preview
+          if (messagesPreview[index].status === 200) {
+            return {
+              ...elem.data,
+              messagePreview: messagesPreview[index].data[0],
+            };
+          } else {
+            const blankMessage: TextMessage = {
+              sender: -1,
+              receiver: -1,
+              content: "",
+              date: "",
+            };
+            return {
+              ...elem.data,
+              messagePreview: blankMessage,
+            };
+          }
+        })
+        .filter((chatPreview) => chatPreview);
     }
-  );
+  });
 };
 
 export const updatePositionRequest = ({

@@ -223,12 +223,12 @@ const ProfileDisplay = () => {
                 </h4>
                 {!isMyProfile && (
                   <Link href={`/messages?user=${profile.id}`}>
-                    <a
+                    <span
                       style={{ transition: "all .15s ease" }}
                       className="bg-green-400 uppercase font-bold hover:shadow-md text-white rounded text-xs px-4 py-2 outline-none focus:outline-none"
                     >
                       Message
-                    </a>
+                    </span>
                   </Link>
                 )}
               </div>

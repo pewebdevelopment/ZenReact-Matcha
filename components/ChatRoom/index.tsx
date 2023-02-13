@@ -217,9 +217,9 @@ const ChatRoom = (): JSX.Element => {
         <div className="">
           <h3 className="text-gray-700 font-bold">
             <Link href={`/profile/${otherUser.id}`}>
-              <a className="cursor-pointer hover:underline">
+              <span className="cursor-pointer hover:underline">
                 {otherUser.userName}
-              </a>
+              </span>
             </Link>
           </h3>
           <p className="text-gray-500 text-xs">{currentUser.lastConnected}</p>
